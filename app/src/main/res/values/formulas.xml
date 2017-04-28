@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <!--General modes variables starts-->
+    <integer name="number_of_modes">4</integer>
+    <string-array name="list_mode_titles">
+        <item>Multiplication</item>
+        <item>Division</item>
+        <item>Addition</item>
+        <item>Subtraction</item>
+    </string-array>
+    <!--Multiplication starts-->
+    <string name="multiplication_mode_title">Multiplication</string>
+    <integer name="multiplication_mode_NOV">2</integer>
+    <string-array name="multiplication_mode_variable_names">
+        <item>input1</item>
+        <item>input2</item>
+    </string-array>
+    <array name="multiplication_mode_default_variables_values">
+        <item>1</item>
+        <item>1</item>
+    </array>
+    <!--Multiplication ends-->
+
+    <!--Division starts-->
+    <string name="division_mode_title">Multiplication</string>
+    <integer name="division_mode_NOV">2</integer>
+    <string-array name="division_mode_variable_names">
+        <item>input1</item>
+        <item>input2</item>
+    </string-array>
+    <array name="division_mode_default_variables_values">
+        <item>1</item>
+        <item>1</item>
+    </array>
+    <!--Division ends-->
+
+    <!--Addition starts-->
+    <string name="addition_mode_title">Multiplication</string>
+    <integer name="addition_mode_NOV">2</integer>
+    <string-array name="addition_mode_variable_names">
+        <item>input1</item>
+        <item>input2</item>
+    </string-array>
+    <array name="addition_mode_default_variables_values">
+        <item>1</item>
+        <item>1</item>
+    </array>
+    <!--Addition ends-->
+
+    <!--Subtraction starts-->
+    <string name="subtraction_mode_title">Multiplication</string>
+    <integer name="subtraction_mode_NOV">2</integer>
+    <string-array name="subtraction_mode_variable_names">
+        <item>input1</item>
+        <item>input2</item>
+    </string-array>
+    <array name="subtraction_mode_default_variables_values">
+        <item>1</item>
+        <item>1</item>
+    </array>
+
+</resources>
