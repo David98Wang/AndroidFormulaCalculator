@@ -20,6 +20,7 @@ import android.preference.RingtonePreference;
 import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -38,6 +39,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
 
     public static final String KEY_PREF_MODE = "pref_mode";
+
+
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -294,6 +297,17 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             }
             return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText edittext1, edittext2;
     private TextView result;
     private Button ButtonSetting;
-    private int mode = -1;
+    private Integer mode = -1;
     private ListView mDrawerList;
     private ArrayAdapter<String> mAdapter;
 
@@ -65,91 +65,11 @@ public class MainActivity extends AppCompatActivity {
         addResultListener();
     }
 
-
-    /**
-     * @return true if success, false if fail
-     */
-//    private boolean initializeModes() throws IOException, XmlPullParserException{
-//
-//        XmlPullParserFactory pullParserFactory;
-//        pullParserFactory = XmlPullParserFactory.newInstance();
-//        XmlPullParser parser = pullParserFactory.newPullParser();
-//
-//        InputStream in_s = getApplicationContext().getAssets().open("\\values\\formulas.xml");
-//        parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-//        parser.setInput(in_s, null);
-//
-//        boolean initializeModesSuccess = true;
-//        initializeModesSuccess &= parseXML(parser);
-///*        try{
-//            String[] modeArray;
-//            InputStream is = getAssets().open("/res/formulas.xml");
-//            XmlPullParserFactory fact = XmlPullParserFactory.newInstance();
-//            fact.setNamespaceAware(true);
-//            XmlResourceParser xrp;
-//            xrp = (XmlResourceParser) fact.newPullParser();
-//            xrp.setInput(is,UTF_8);
-//            modeArray
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
-//
-//        modeArray = getResources().getStringArray(formulas.);
-//
-//        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, modeArray);
-//        mDrawerList.setAdapter(mAdapter);*/
-//
-//        initializeModesSuccess &= addDrawerItem();
-//        return initializeModesSuccess;
-//    }
-//
-//    boolean parseXML(XmlPullParser parser) throws XmlPullParserException, IOException {
-//        int eventType = parser.getEventType();
-//        FormulaMode currentFormula = null;
-//        String curName = null;
-//        while(eventType != XmlPullParser.END_DOCUMENT){
-//            curName = null;
-//            switch(eventType)
-//            {
-//                case XmlPullParser.START_TAG:
-//                    curName = parser.getName();
-//                    if(curName.matches("number_of_modes"))
-//                    break;
-//                case XmlPullParser.END_TAG:
-//
-//            }
-//        }
-//        return true;
-//    }
-//
-//    private boolean addDrawerItem() {
-//        return true;
-//    }
-//
-//    public void parseSetting() {
-//        try {
-//            SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-//            String modeString = SP.getString("mode", "mul");
-//            switch (modeString) {
-//                case "1":
-//                    mode = 1;
-//                    break;
-//                case "2":
-//                    mode = 2;
-//                    break;
-//                case "3":
-//                    mode = 3;
-//                    break;
-//                case "4":
-//                    mode = 3;
-//                    break;
-//                default:
-//                    mode = 4;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        changeTitle();
+    }
     public void parseSetting() {
         try {
             SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -191,10 +111,7 @@ public class MainActivity extends AppCompatActivity {
         if (b != 0) return a / b;
         else return 0;//TODO: change divide by 0 case
     }
-
-    public void addResultListener() {
-
-        // get edittext component
+    public void changeTitle() {
         TextView title = (TextView) findViewById(R.id.textViewTitle);
         switch(mode){
             case 1:
@@ -210,8 +127,16 @@ public class MainActivity extends AppCompatActivity {
                 title.setText("SUBTRACT");
                 break;
             default:
-                title.setText("WTF");
+                title.setText("Unexpected Case");
         }
+    }
+    public void addTitileListener(int curMode) {
+        //TextView titleTV = (TextView) findViewById(R.id.textViewTitle);
+        changeTitle();
+    }
+    public void addResultListener() {
+
+        changeTitle();
         //title.setText(Integer.toString(mode));
         edittext1 = (EditText) findViewById(R.id.edittext1);
         edittext2 = (EditText) findViewById(R.id.edittext2);
@@ -227,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         // add a keylistener to keep track user input
         edittext1.setOnKeyListener(new OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+                changeTitle();
                 // if keydown and "enter" is pressed
                 if ((event.getAction() == KeyEvent.ACTION_DOWN)
                         && (keyCode == KeyEvent.KEYCODE_ENTER)) {
@@ -264,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
         });
         edittext2.setOnKeyListener(new OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+                changeTitle();
                 if ((event.getAction() == KeyEvent.ACTION_DOWN)
                         && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     double a = 0., b = 0.;
